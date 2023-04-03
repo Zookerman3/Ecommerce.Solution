@@ -21,3 +21,4 @@
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/obj/Debug/net6.0/EcommerceSite.pdb
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/obj/Debug/net6.0/EcommerceSite.genruntimeconfig.cache
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/obj/Debug/net6.0/ref/EcommerceSite.dll
+/Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/appsettings.json
