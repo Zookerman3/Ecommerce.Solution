@@ -55,13 +55,8 @@ namespace EcommerceSite.Controllers
             }
         }
 
-        public ActionResult Login()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public async Task<ActionResult> Login(LoginViewModel model)
+        public async Task<ActionResult> Index(LoginViewModel model)
         {
             if (!ModelState.IsValid)
             {
