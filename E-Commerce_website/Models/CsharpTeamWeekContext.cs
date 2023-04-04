@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace CsharpTeamWeek.Models
+namespace EcommerceSite.Models
 {
-  public class CsharpTeamWeekContext : DbContext
+  public class CSharpTeamWeekContext : DbContext
   {
-    public CsharpTeamWeekContext(DbContextOptions<CsharpTeamWeekContext> options)
+    public CSharpTeamWeekContext(DbContextOptions<CSharpTeamWeekContext> options)
         : base(options)
     {
     }

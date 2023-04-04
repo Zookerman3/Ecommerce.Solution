@@ -34,3 +34,4 @@
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/System.Text.Encodings.Web.dll
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/System.Text.Json.dll
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
+/Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/Newtonsoft.Json.dll

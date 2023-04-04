@@ -1,5 +1,5 @@
 
-namespace CsharpTeamWeek.Models;
+namespace EcommerceSite.Models;
 
 public class ShoppingCart
 {

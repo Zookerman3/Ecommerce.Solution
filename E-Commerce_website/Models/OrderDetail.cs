@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CsharpTeamWeek.Models
+namespace EcommerceSite.Models
 {
     public class OrderDetail
     {

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace CsharpTeamWeek.Models
+namespace EcommerceSite.Models
 {
   public class Order
   {

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CsharpTeamWeek.Models
+namespace EcommerceSite.Models
 {
   public class Review
   {
