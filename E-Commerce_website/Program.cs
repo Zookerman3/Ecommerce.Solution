@@ -1,11 +1,20 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CsharpTeamWeek.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<CsharpTeamWeekContext>(
+    dbContextOptions => dbContextOptions.UseMySql(
+        builder.Configuration["ConnectionStrings:DefaultConnection"],
+        ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"])
+    ) 
+);
 
 var app = builder.Build();
 
