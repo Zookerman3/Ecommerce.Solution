@@ -1,6 +1,4 @@
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -8,6 +6,7 @@ namespace EcommerceSite.Models
 {
   public class Product
   {
+
     public int ProductId { get; set; }
     public string Brand { get; set; }
     public string Type { get; set; }
@@ -25,16 +24,29 @@ namespace EcommerceSite.Models
         ReviewCount = Reviews?.Count ?? 0;
     }
 
-        public static List<Product> GetProducts()
+public static List<Product> GetProducts()
+{
+    Task<string> apiCallTask = ApiHelper.GetAll();
+    string result = apiCallTask.Result;
+
+    ApiResponse<Product> apiResponse = JsonConvert.DeserializeObject<ApiResponse<Product>>(result);
+
+    if (apiResponse == null)
     {
-      Task<string> apiCallTask = ApiHelper.GetAll();
-      string result = apiCallTask.Result;
-
-      JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
-      List<Product> productList = JsonConvert.DeserializeObject<List<Product>>(jsonResponse.ToString());
-
-      return productList;
+        throw new Exception("Failed to deserialize API response.");
     }
+
+    if (apiResponse.Data == null)
+    {
+        throw new Exception("API response did not contain any data.");
+    }
+
+    List<Product> productList = apiResponse.Data;
+
+    return productList;
+}
+
+
 
     public static Product GetDetails(int id)
     {

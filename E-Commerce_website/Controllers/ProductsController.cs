@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using EcommerceSite.Models;
 
-namespace TravelAPIClient.Controllers;
+namespace EcommerceSite.Controllers;
 
 public class ProductsController : Controller
 {
