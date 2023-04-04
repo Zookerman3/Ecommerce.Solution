@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<CSharpTeamWeekContext>(
+builder.Services.AddDbContext<EcommerceSiteContext>(
     dbContextOptions => dbContextOptions.UseMySql(
         builder.Configuration["ConnectionStrings:DefaultConnection"],
         ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"])

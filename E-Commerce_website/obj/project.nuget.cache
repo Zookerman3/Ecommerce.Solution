@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OH6iqixSN+WjHT6v2x2baXuCl6Ojw9rLBMBMIOLmAex6QN0tTdgimM5ZOUgLbsMN25Xns1NlA/j4QtpfVeUjKQ==",
+  "dgSpecHash": "O+Y5x+2PkVFzipAcMNbZONQd712++irqP37Cp6YztXvhBW6/Ln35yVy4czrKKXv/OncQ2F5oM8c5rA4rnZeONw==",
   "success": true,
   "projectFilePath": "/Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/EcommerceSite.csproj",
   "expectedPackageFiles": [
@@ -21,6 +21,7 @@
     "/Users/student/.nuget/packages/microsoft.aspnetcore.http.extensions/2.2.0/microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512",
     "/Users/student/.nuget/packages/microsoft.aspnetcore.http.features/2.2.0/microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "/Users/student/.nuget/packages/microsoft.aspnetcore.identity/2.2.0/microsoft.aspnetcore.identity.2.2.0.nupkg.sha512",
+    "/Users/student/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/2.2.0/microsoft.aspnetcore.identity.entityframeworkcore.2.2.0.nupkg.sha512",
     "/Users/student/.nuget/packages/microsoft.aspnetcore.webutilities/2.2.0/microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "/Users/student/.nuget/packages/microsoft.entityframeworkcore/6.0.0/microsoft.entityframeworkcore.6.0.0.nupkg.sha512",
     "/Users/student/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.0/microsoft.entityframeworkcore.abstractions.6.0.0.nupkg.sha512",
@@ -35,6 +36,7 @@
     "/Users/student/.nuget/packages/microsoft.extensions.fileproviders.abstractions/2.2.0/microsoft.extensions.fileproviders.abstractions.2.2.0.nupkg.sha512",
     "/Users/student/.nuget/packages/microsoft.extensions.hosting.abstractions/2.2.0/microsoft.extensions.hosting.abstractions.2.2.0.nupkg.sha512",
     "/Users/student/.nuget/packages/microsoft.extensions.identity.core/2.2.0/microsoft.extensions.identity.core.2.2.0.nupkg.sha512",
+    "/Users/student/.nuget/packages/microsoft.extensions.identity.stores/2.2.0/microsoft.extensions.identity.stores.2.2.0.nupkg.sha512",
     "/Users/student/.nuget/packages/microsoft.extensions.logging/6.0.0/microsoft.extensions.logging.6.0.0.nupkg.sha512",
     "/Users/student/.nuget/packages/microsoft.extensions.logging.abstractions/6.0.0/microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
     "/Users/student/.nuget/packages/microsoft.extensions.objectpool/2.2.0/microsoft.extensions.objectpool.2.2.0.nupkg.sha512",
