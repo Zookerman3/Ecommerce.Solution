@@ -4,6 +4,5 @@ namespace EcommerceSite.Models
 {
     public class ApplicationUser : IdentityUser
     {
-
     }
 }

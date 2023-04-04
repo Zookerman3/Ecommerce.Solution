@@ -1,38 +1,46 @@
 @{
     Layout = "_Layout";
 }
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Hello @User.Identity.Name!</p>
+}
 
 <div class="loginpage">
 
     <div class="login-container">
         <div class="login-creds">
 
-                <h3>Login Here</h3>
+            <h3>Login Here</h3>
 
-                @using EcommerceSite.ViewModels
+            @using EcommerceSite.ViewModels
 
-                @model LoginViewModel
-                <hr />
+            @model LoginViewModel
+            <hr />
 
-                @if (!ViewData.ModelState.IsValid)
-                {
-                    @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:")
-                }
+            @if (!ViewData.ModelState.IsValid)
+            {
+                @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:")
+            }
 
-                @using (Html.BeginForm())
-                {
-                    @Html.LabelFor(m => m.Email)
-                    @Html.TextBoxFor(m => m.Email)
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+            {
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
 
-                    @Html.LabelFor(m => m.Password)
-                    @Html.EditorFor(m => m.Password)
+                @Html.LabelFor(m => m.Password)
+                @Html.EditorFor(m => m.Password)
 
-                    <input type="submit" value="Log in" />
-                }
-                <p id="register-link">@Html.ActionLink("Register", "Register", null, new { @class = "register-link" })</p>
+                <button class="login" type="submit">Log in</button>
+            }
+            <a href='@Url.Action("Register", "Account")'>
+                <button id="register-link">Register</button>
+            </a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p id="log-off">@Html.ActionLink("Log Off", "Index")</p>
+            }
         </div>
-
-
     </div>
 </div>
 

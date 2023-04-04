@@ -1,23 +1,23 @@
+@using EcommerceSite.Models;
 <div id="footer">
-    @if (User.Identity.IsAuthenticated)
-    {
-        <div id="login-status-message">
-            <span style="font-size: 85%">logged in as</span>
-            <span class="user-name">@User.Identity.Name </span>
-        </div>
-        <div class="login-button">
-            @using (Html.BeginForm("LogOff", "Account"))
-            {
-                <button type="Submit" class="logout">Log out</button>
-            }
-        </div>
-    }
-    else
-    {
-        <div class="login-button">
-            <a href='@Url.Action("Index", "Account")'>
-                <button class="login">Log in</button>
-            </a>
-        </div>
-    }
-</div>
+@if (User.Identity.IsAuthenticated)
+{
+    <div id="login-status-message">
+        <span style="font-size: 85%">logged in as</span>
+        <span class="user-name">@User.Identity.Name</span>
+    </div>
+    <div class="login-button">
+        @using (Html.BeginForm("LogOff", "Account"))
+        {
+            <button type="Submit" class="logout">Log out</button>
+        }
+    </div>
+}
+else
+{
+    <div class="login-button">
+        <a href='@Url.Action("Index", "Account")'>
+            <button class="login">Log in</button>
+        </a>
+    </div>
+}
