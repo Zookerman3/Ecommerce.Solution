@@ -5,10 +5,10 @@ namespace EcommerceSite.Models
 {
   public class ApiHelper
   {
-    public static async Task<string> GetAll()
+    public static async Task<string> GetAll(string page = "")
     {
       RestClient client = new RestClient("http://localhost:5114/");
-      RestRequest request = new RestRequest($"api/products", Method.Get);
+      RestRequest request = new RestRequest($"api/products?{page}", Method.Get);
       RestResponse response = await client.GetAsync(request);
       return response.Content;
     }
@@ -46,9 +46,9 @@ namespace EcommerceSite.Models
       request.AddHeader("Content-Type", "application/json");
       await client.DeleteAsync(request);
     }
-    
-      [HttpPost(Name = "Post")]
-        public static async void PostNewUser(string newApplicationUser, string jsonApplicationUser)
+
+    [HttpPost(Name = "Post")]
+    public static async void PostNewUser(string newApplicationUser, string jsonApplicationUser)
     {
       RestClient client = new RestClient("http://localhost:5114/");
       RestRequest request = new RestRequest($"api/products", Method.Post);

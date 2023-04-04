@@ -10,7 +10,7 @@ public class ProductsController : Controller
   {
     if (string.IsNullOrEmpty(query))
     {
-      List<Product> products = Product.GetProducts();
+      List<Product> products = Product.GetProducts(query);
       return View("Index", products);
     }
 
@@ -19,7 +19,8 @@ public class ProductsController : Controller
 
     if (!string.IsNullOrEmpty(query))
     {
-      url += "?query=" + query;
+      List<Product> products = Product.GetProducts(query);
+      return View("Index", products);
     }
 
     HttpResponseMessage response = await client.GetAsync(url);

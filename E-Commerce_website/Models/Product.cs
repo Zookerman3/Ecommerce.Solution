@@ -24,9 +24,9 @@ namespace EcommerceSite.Models
         ReviewCount = Reviews?.Count ?? 0;
     }
 
-public static List<Product> GetProducts()
+public static List<Product> GetProducts(string page)
 {
-    Task<string> apiCallTask = ApiHelper.GetAll();
+    Task<string> apiCallTask = ApiHelper.GetAll(page);
     string result = apiCallTask.Result;
 
     ApiResponse<Product> apiResponse = JsonConvert.DeserializeObject<ApiResponse<Product>>(result);
