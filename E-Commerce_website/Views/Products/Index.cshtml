@@ -12,6 +12,8 @@
 <ol>
 @foreach (Product product in Model)
 {
-  <li><strong>@product.Brand</strong> the @product.Type | <a href="/Products/Details/@(product.ProductId)">View Details</a></li>
+  <li><strong>@product.Brand</strong> the @product.Type |  @product.Name | <img  style="max-height: 150px; max-width: 200px; object-fit: contain;" src="@product.ImageLink"> |<a href="/Products/Details/@(product.ProductId)">View Details</a></li>
 }
 </ol>
+
+<a href="Products">Next</a>

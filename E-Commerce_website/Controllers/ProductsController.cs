@@ -5,10 +5,35 @@ namespace EcommerceSite.Controllers;
 
 public class ProductsController : Controller
 {
-  public IActionResult Index()
+
+  public async Task<IActionResult> Index(string query)
   {
-    List<Product> products = Product.GetProducts();
-    return View(products);
+    if (string.IsNullOrEmpty(query))
+    {
+      List<Product> products = Product.GetProducts();
+      return View("Index", products);
+    }
+
+    HttpClient client = new HttpClient();
+    string url = "https://api.example.com/products";
+
+    if (!string.IsNullOrEmpty(query))
+    {
+      url += "?query=" + query;
+    }
+
+    HttpResponseMessage response = await client.GetAsync(url);
+
+    if (response.IsSuccessStatusCode)
+    {
+      List<Product> products = await response.Content.ReadAsAsync<List<Product>>();
+      return View(products);
+    }
+    else
+    {
+      // handle the error response
+      return View("Error");
+    }
   }
 
   public IActionResult Details(int id)
@@ -39,7 +64,7 @@ public class ProductsController : Controller
   public ActionResult Edit(Product product)
   {
     Product.Put(product);
-    return RedirectToAction("Details", new { id = product.ProductId});
+    return RedirectToAction("Details", new { id = product.ProductId });
   }
 
   public ActionResult Delete(int id)
