@@ -66,8 +66,8 @@
       </div>
     </div>
     <div id="smart-button-container">
-    <div style="text-align: center"><label for="description">Total cost: </label><input type="text" name="descriptionInput" id="description" maxlength="127" value="Total Cost"></div>
-      <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>
+    @* <div style="text-align: center"><label for="description">Total cost: </label><input type="text" name="descriptionInput" id="description" maxlength="127" value=""></div> *@
+      @* <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p> *@
     <div style="text-align: center"><label for="amount">Payment amount: </label><input name="amountInput" type="number" id="amount" value="" ><span> USD</span></div>
       <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>
     <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="" ></div>
@@ -77,15 +77,13 @@
   <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
   <script>
   function initPayPalButton() {
-    var description = document.querySelector('#smart-button-container #description');
     var amount = document.querySelector('#smart-button-container #amount');
-    var descriptionError = document.querySelector('#smart-button-container #descriptionError');
     var priceError = document.querySelector('#smart-button-container #priceLabelError');
     var invoiceid = document.querySelector('#smart-button-container #invoiceid');
     var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
     var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
 
-    var elArr = [description, amount];
+    var elArr = [amount];
 
     if (invoiceidDiv.firstChild.innerHTML.length > 1) {
       invoiceidDiv.style.display = "block";
@@ -128,12 +126,6 @@
       },
 
       onClick: function () {
-        if (description.value.length < 1) {
-          descriptionError.style.visibility = "visible";
-        } else {
-          descriptionError.style.visibility = "hidden";
-        }
-
         if (amount.value.length < 1) {
           priceError.style.visibility = "visible";
         } else {
@@ -146,7 +138,6 @@
           invoiceidError.style.visibility = "hidden";
         }
 
-        purchase_units[0].description = description.value;
         purchase_units[0].amount.value = amount.value;
 
         if(invoiceid.value !== '') {
@@ -182,4 +173,4 @@
     }).render('#paypal-button-container');
   }
   initPayPalButton();
-  </script>
+</script>
