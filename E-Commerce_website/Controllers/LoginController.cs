@@ -6,15 +6,15 @@ namespace EcommerceSite.Controllers;
 
 public class LoginController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+  private readonly ILogger<HomeController> _logger;
 
-    public LoginController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
+  public LoginController(ILogger<HomeController> logger)
+  {
+    _logger = logger;
+  }
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+  public IActionResult Index()
+  {
+    return View();
+  }
 }
