@@ -1,34 +1,35 @@
 @{
-    ViewData["Title"] = "Products";
+  Layout = "_Layout";
 }
 
-<h1>All TravelAPI Products</h1>
+<body class="product-list">
+  <div class="product-container">
 
-<h3>Actions:</h3>
+    @foreach (Product product in Model)
+    {
+      <div class="product-tile">
+        <strong>@product.Brand</strong> the @product.Type | @product.Name 
+        <img style="max-height: 150px; min-height: 150px; max-width: 200px; object-fit: contain;" src="@product.ImageLink"
+        alt="@product.Name">
+        <a href="/Products/Details/@(product.ProductId)">View Details</a>
+      </div>
 
-<p>@Html.ActionLink("Add a new product to the park", "Create")</p>
+    }
+  </div>
 
-<h3>Products:</h3>
-<ol>
-@foreach (Product product in Model)
-{
-  <li>
-    <strong>@product.Brand</strong> the @product.Type |  @product.Name |
-    <img style="max-height: 150px; min-height: 150px; max-width: 200px; object-fit: contain;" src="@product.ImageLink" alt="@product.Name">
-    | <a href="/Products/Details/@(product.ProductId)">View Details</a>
-  </li>
-}
-</ol>
 
-<button id="next-page-btn">Next Page</button>
+    <button class="btn btn-primary btn-xl"id="next-page-btn">Next Page</button>
 
-<script>
-    let pageNumber = 1;
-    const nextPageBtn = document.getElementById('next-page-btn');
+    <script>
+      let pageNumber = 1;
+      const nextPageBtn = document.getElementById('next-page-btn');
 
-    nextPageBtn.addEventListener('click', () => {
+      nextPageBtn.addEventListener('click', () => {
         pageNumber++;
         const url = "@Url.Action("Index", "Products")?query=pageNumber=" + pageNumber;
         window.location.href = url;
-    });
-</script>
+      });
+    </script>
+
+
+</body>
