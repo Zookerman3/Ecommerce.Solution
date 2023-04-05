@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /*!
 * Start Bootstrap - Stylish Portfolio v6.0.6 (https://startbootstrap.com/theme/stylish-portfolio)
 * Copyright 2013-2023 Start Bootstrap
@@ -18,7 +19,226 @@ div#footer {
   width: 100%;
   color: #CCC;
   background: #333;
-  padding: 8px;
+  padding: 5px;
+}
+
+
+:root {
+  --gradient: linear-gradient(90deg, #ee6352, purple, #ee6352);
+
+}
+
+.login-page {
+  font-family: basic-sans, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.125em;
+  line-height: 1.6;
+  color: #333;
+  background: #ddd;
+  background-size: 300%;
+  background-image: var(--gradient);
+  animation: bg-animation 25s infinite;
+}
+
+@keyframes bg-animation {
+  0% {
+    background-position: left
+  }
+
+  50% {
+    background-position: right
+  }
+
+  100% {
+    background-position: left
+  }
+}
+
+
+
+.login-container {
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.13);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;
+  padding-bottom: 30px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+.login-container h3 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center;
+}
+
+.login-container label {
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+  color: #ffffff;
+  outline: none;
+  border: none;
+}
+
+.login-container ::placeholder {
+  color: #e5e5e5;
+}
+
+.login-container input[type="submit"] {
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(8, 7, 16, 0.6);
+}
+
+.login-button {
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 20px;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(8, 7, 16, 0.6);
+}
+
+#log-off {
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 20px;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(8, 7, 16, 0.6);
+}
+
+/* .account-button{
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+} */
+#back-to-login {
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 20px;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(8, 7, 16, 0.6);
+}
+
+#footer-login-button {
+  width: 5%;
+  height: 10%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 0px 0;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 2px;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(8, 7, 16, 0.6);
+}
+
+#footer-logout-button {
+  width: 5%;
+  height: 10%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 0px 0;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 2px;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(8, 7, 16, 0.6);
+}
+
+#login-status-message {
+  float: right;
+}
+
+#view-all-products-button {
+  display: block;
+  margin: auto;
+  text-decoration: none;
+}
+
+.product-img {
+  width: 700px;
+  height: 467px;
 }
 
 
@@ -9211,8 +9431,8 @@ fieldset:disabled .btn {
 
 .bg-blue {
 
-    background-image: linear-gradient(to right, blue , purple);
-  
+  background-image: linear-gradient(to right, blue, purple);
+
 }
 
 .bg-dark {
