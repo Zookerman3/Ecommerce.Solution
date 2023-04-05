@@ -3,7 +3,7 @@
 }
 
 
-<div class="loginpage">
+<div class="login-page">
 
     <div class="login-container">
         <div class="login-creds">
@@ -28,14 +28,17 @@
                 @Html.LabelFor(m => m.Password)
                 @Html.EditorFor(m => m.Password)
 
-                <button class="login" type="submit">Log in</button>
+                <button class="login login-button" type="submit">Log in</button>
             }
             <a href='@Url.Action("Register", "Account")'>
-                <button id="register-link">Register</button>
+                <button class="login-button">Register</button>
             </a>
             @if (User.Identity.IsAuthenticated)
             {
-                <p id="log-off">@Html.ActionLink("Log Off", "Index")</p>
+                @using (Html.BeginForm("LogOff", "Account"))
+                {
+                    <button type="Submit" class="login-button">Log out</button>
+                }
             }
         </div>
     </div>
