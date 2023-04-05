@@ -7,13 +7,13 @@
 @using EcommerceSite.Models
 @inject SignInManager<ApplicationUser> SignInManager
 
-@if (Model.JoinEntites.Count > 0)
+@* @if (Model.JoinEntites.Count > 0)
 {
 <ul>
   @foreach (AppuserProduct join in Model.JoinEntites)
   {
 
-    <li>@join.Product.ProductId
+    <li>
     </li>
   }
   </ul>
@@ -21,4 +21,19 @@
 else
 {
   <h3>No Books have been checked out!</h3>
+} *@
+
+@foreach (Product product in ViewBag.Products)
+{
+  @foreach (AppuserProduct join in Model.JoinEntites)
+  {
+    if (join.ProductId == product.ProductId)
+    {
+      <li>
+        <strong>@product.Brand</strong> the @product.Type |  @product.Name |
+        <img style="max-height: 150px; min-height: 150px; max-width: 200px; object-fit: contain;" src="@product.ImageLink" alt="@product.Name">
+        | <a href="/Products/Details/@(product.ProductId)">View Details</a>
+      </li>
+    }
+  }
 }

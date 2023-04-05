@@ -109,13 +109,16 @@ namespace EcommerceSite.Controllers
       return RedirectToAction("Cart", new { id = userId });
     }
 
-    public ActionResult Cart(string id)
-    {
-      ApplicationUser thisUser = _db.Users
-                      .Include(User => User.JoinEntites)
-                      .FirstOrDefault(user => user.Id == id);
-      return View(thisUser);
-    }
+ public ActionResult Cart(string id, string page)
+{
+    List<Product> products = Product.GetProducts(page);
+    ApplicationUser thisUser = _db.Users
+        .Include(User => User.JoinEntites)
+        .FirstOrDefault(user => user.Id == id);
+
+    ViewBag.Products = products;
+    return View(thisUser);
+}
 
   }
 }
