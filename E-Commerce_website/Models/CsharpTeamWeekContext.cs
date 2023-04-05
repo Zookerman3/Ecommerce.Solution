@@ -1,9 +1,10 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EcommerceSite.Models
 {
+  [NotMapped]
   public class EcommerceSiteContext : IdentityDbContext<ApplicationUser>
   {
 

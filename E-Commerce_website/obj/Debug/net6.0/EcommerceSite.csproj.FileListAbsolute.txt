@@ -15,7 +15,6 @@
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/EcommerceSite.dll
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/EcommerceSite.pdb
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/Humanizer.dll
-/Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/System.Net.Http.Formatting.dll
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -39,3 +38,6 @@
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/obj/Debug/net6.0/EcommerceSite.pdb
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/obj/Debug/net6.0/EcommerceSite.genruntimeconfig.cache
 /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/obj/Debug/net6.0/ref/EcommerceSite.dll
+/Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/Microsoft.AspNetCore.JsonPatch.dll
+/Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/Microsoft.DotNet.PlatformAbstractions.dll
+/Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll

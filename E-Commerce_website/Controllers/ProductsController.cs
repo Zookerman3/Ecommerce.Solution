@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using EcommerceSite.Models;
 
+
 namespace EcommerceSite.Controllers;
 
 public class ProductsController : Controller
@@ -27,7 +28,7 @@ public class ProductsController : Controller
 
     if (response.IsSuccessStatusCode)
     {
-      List<Product> products = await response.Content.ReadAsAsync<List<Product>>();
+      List<Product> products = await response.Content.ReadFromJsonAsync<List<Product>>();
       return View(products);
     }
     else

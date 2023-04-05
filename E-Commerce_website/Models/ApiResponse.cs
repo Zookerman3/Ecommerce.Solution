@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using RestSharp;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EcommerceSite.Models
 {
 
+  [NotMapped]
   public class ApiResponse<T>
   {
     public int PageNumber { get; set; }

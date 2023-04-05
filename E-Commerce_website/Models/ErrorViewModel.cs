@@ -1,5 +1,7 @@
 namespace EcommerceSite.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
+[NotMapped]
 public class ErrorViewModel
 {
     public string? RequestId { get; set; }

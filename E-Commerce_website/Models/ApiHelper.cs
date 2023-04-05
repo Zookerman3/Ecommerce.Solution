@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using RestSharp;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EcommerceSite.Models
 {
+
+  [NotMapped]
   public class ApiHelper
   {
     public static async Task<string> GetAll(string page = "")

@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 
 namespace EcommerceSite.Models
 {
+  [NotMapped]
   public class Product
   {
 
@@ -21,30 +22,32 @@ namespace EcommerceSite.Models
     public int? ReviewCount { get; set; }
     public void UpdateReviewCount()
     {
-        ReviewCount = Reviews?.Count ?? 0;
+      ReviewCount = Reviews?.Count ?? 0;
     }
 
-public static List<Product> GetProducts(string page)
-{
-    Task<string> apiCallTask = ApiHelper.GetAll(page);
-    string result = apiCallTask.Result;
+    public List<AppuserProduct> JoinEntites { get; }
 
-    ApiResponse<Product> apiResponse = JsonConvert.DeserializeObject<ApiResponse<Product>>(result);
-
-    if (apiResponse == null)
+    public static List<Product> GetProducts(string page)
     {
+      Task<string> apiCallTask = ApiHelper.GetAll(page);
+      string result = apiCallTask.Result;
+
+      ApiResponse<Product> apiResponse = JsonConvert.DeserializeObject<ApiResponse<Product>>(result);
+
+      if (apiResponse == null)
+      {
         throw new Exception("Failed to deserialize API response.");
-    }
+      }
 
-    if (apiResponse.Data == null)
-    {
+      if (apiResponse.Data == null)
+      {
         throw new Exception("API response did not contain any data.");
+      }
+
+      List<Product> productList = apiResponse.Data;
+
+      return productList;
     }
-
-    List<Product> productList = apiResponse.Data;
-
-    return productList;
-}
 
 
 

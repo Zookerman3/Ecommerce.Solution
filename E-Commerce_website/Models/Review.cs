@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EcommerceSite.Models
 {
+  [NotMapped]
   public class Review
   {
 

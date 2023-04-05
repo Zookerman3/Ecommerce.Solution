@@ -1,7 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EcommerceSite.Models
 {
+  [NotMapped]
   public class CartItem
   {
     [Key]
