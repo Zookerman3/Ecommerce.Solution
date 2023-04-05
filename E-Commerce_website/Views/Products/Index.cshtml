@@ -20,4 +20,15 @@
 }
 </ol>
 
-<a href="@Url.Action("Index", "Products", new { query = "pageNumber=2" })">Next</a>
+<button id="next-page-btn">Next Page</button>
+
+<script>
+    let pageNumber = 1;
+    const nextPageBtn = document.getElementById('next-page-btn');
+
+    nextPageBtn.addEventListener('click', () => {
+        pageNumber++;
+        const url = "@Url.Action("Index", "Products")?query=pageNumber=" + pageNumber;
+        window.location.href = url;
+    });
+</script>
