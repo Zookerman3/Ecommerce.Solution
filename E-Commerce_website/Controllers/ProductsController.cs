@@ -7,11 +7,11 @@ namespace EcommerceSite.Controllers;
 public class ProductsController : Controller
 {
 
-  public async Task<IActionResult> Index(string query)
+  public async Task<IActionResult> Index(string query, bool showAll)
   {
     if (string.IsNullOrEmpty(query))
     {
-      List<Product> products = Product.GetProducts(query);
+      List<Product> products = Product.GetProducts(query, showAll);
       return View("Index", products);
     }
 
@@ -20,7 +20,7 @@ public class ProductsController : Controller
 
     if (!string.IsNullOrEmpty(query))
     {
-      List<Product> products = Product.GetProducts(query);
+      List<Product> products = Product.GetProducts(query, showAll);
       return View("Index", products);
     }
 

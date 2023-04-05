@@ -8,10 +8,11 @@ namespace EcommerceSite.Models
   [NotMapped]
   public class ApiHelper
   {
-    public static async Task<string> GetAll(string page = "")
+    public static async Task<string> GetAll(string page = "", bool showAll = false)
     {
       RestClient client = new RestClient("http://localhost:5114/");
-      RestRequest request = new RestRequest($"api/products?{page}", Method.Get);
+    string queryString = $"{page}{(showAll ?  "&showAll=true" : "")}"; // creates a new variable named queryString which takes an optional parameter of page and an optional parameter of showAll. showAll remains false unless explicitly passed in as true.
+      RestRequest request = new RestRequest($"api/products?{queryString}", Method.Get);
       RestResponse response = await client.GetAsync(request);
       return response.Content;
     }

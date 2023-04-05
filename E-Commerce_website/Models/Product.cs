@@ -27,9 +27,9 @@ namespace EcommerceSite.Models
 
     public List<AppuserProduct> JoinEntites { get; }
 
-    public static List<Product> GetProducts(string page)
+    public static List<Product> GetProducts(string page, bool showAll)
     {
-      Task<string> apiCallTask = ApiHelper.GetAll(page);
+      Task<string> apiCallTask = ApiHelper.GetAll(page, showAll);
       string result = apiCallTask.Result;
 
       ApiResponse<Product> apiResponse = JsonConvert.DeserializeObject<ApiResponse<Product>>(result);
