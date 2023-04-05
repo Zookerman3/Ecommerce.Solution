@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/student/Desktop/CsharpTeamWeek/E-Commerce_website
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/Views/Account/Cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9DYXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/student/Desktop/CsharpTeamWeek/E-Commerce_website/Views/Account/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

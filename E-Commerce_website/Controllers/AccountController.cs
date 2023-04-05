@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using EcommerceSite.Models;
 using System.Threading.Tasks;
 using EcommerceSite.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceSite.Controllers
 {
@@ -88,5 +89,33 @@ namespace EcommerceSite.Controllers
       await _signInManager.SignOutAsync();
       return RedirectToAction("Index", "Account");
     }
+
+
+
+    // __________________________________________________________________
+
+    [HttpPost]
+    public ActionResult AddToCart(Product product, string userId, int productId)
+    {
+#nullable enable
+      AppuserProduct? joinEntity = _db.AppuserProducts.FirstOrDefault(join => (join.UserID == userId && join.ProductId == product.ProductId));
+#nullable disable
+      if (joinEntity == null && userId != null)
+      {
+        _db.AppuserProducts.Add(new AppuserProduct() { UserID = userId, ProductId = product.ProductId });
+        // thisBook.Copies = (thisBook.Copies -1);
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Cart", new { id = userId });
+    }
+
+    public ActionResult Cart(string id)
+    {
+      ApplicationUser thisUser = _db.Users
+                      .Include(User => User.JoinEntites)
+                      .FirstOrDefault(user => user.Id == id);
+      return View(thisUser);
+    }
+
   }
 }

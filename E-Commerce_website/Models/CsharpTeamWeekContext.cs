@@ -9,16 +9,17 @@ namespace EcommerceSite.Models
   {
 
     // public ProductContext()
-//   : base("WingtipToys")
-// {
-// }
+    //   : base("WingtipToys")
+    // {
+    // }
 
-// public DbSet<Product> Products { get; set; } needed?
+    // public DbSet<Product> Products { get; set; } needed?
     public DbSet<Order> Orders { get; set; }
     public DbSet<CartItem> CartItems { get; set; }
     public DbSet<OrderDetail> OrderDetails { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Review> Reviews { get; set; }
+    public DbSet<AppuserProduct> AppuserProducts { get; set; }
 
     public EcommerceSiteContext(DbContextOptions<EcommerceSiteContext> options) : base(options)
     {

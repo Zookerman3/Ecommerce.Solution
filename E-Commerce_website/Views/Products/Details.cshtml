@@ -1,6 +1,8 @@
 @{
   ViewData["Title"] = "Products";
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
 
 <h1>All TravelAPI Products</h1>
 
@@ -16,6 +18,14 @@
 
 <strong>Brand: @Model.Brand</strong> @Model.Type Name: @Model.Name <br>
 Description: @Model.Description <br>
+
+
+@using (Html.BeginForm("AddToCart", "Account", new { userId = SignInManager.UserManager.GetUserId(User), productId = Model.ProductId}, FormMethod.Post))
+{
+  <button class="green" type="submit">Add to Cart</button>
+}
+
+
 <button id="next-page-btn">Next Page</button>
 
 <script>

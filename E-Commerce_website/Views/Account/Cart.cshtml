@@ -1,0 +1,24 @@
+@{
+    Layout = "_Layout";
+}
+
+
+@using Microsoft.AspNetCore.Identity
+@using EcommerceSite.Models
+@inject SignInManager<ApplicationUser> SignInManager
+
+@if (Model.JoinEntites.Count > 0)
+{
+<ul>
+  @foreach (AppuserProduct join in Model.JoinEntites)
+  {
+
+    <li>@join.Product.ProductId
+    </li>
+  }
+  </ul>
+}
+else
+{
+  <h3>No Books have been checked out!</h3>
+}
