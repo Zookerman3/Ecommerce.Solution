@@ -2,6 +2,9 @@
   Layout = "_Layout";
 }
 
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,8 +33,17 @@
   <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
   <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
-      <li class="sidebar-brand"><a href="#page-top">Home</a></li>
-      <li class="sidebar-nav-item"><a href="#page-top">Checkout</a></li>
+      <li class="sidebar-brand"><a href='@Url.Action("Index", "Home")'>Home</a></li>
+      <li class="sidebar-nav-item">
+          @using (Html.BeginForm("Cart", "Account", new
+      {
+        userId = SignInManager.UserManager.GetUserId(User)
+      }))
+      {
+        <a href="#" class="sidebar-nav-item-link" onclick="this.closest('form').submit()">Checkout</a>
+      }
+    </li>
+      @* <li class="sidebar-nav-item"><a href='@Url.Action("Cart", "Account")'>Checkout</a></li> *@
       <li class="sidebar-nav-item"><a href="#about">About</a></li>
       <li class="sidebar-nav-item"><a href="#services">Services</a></li>
       <li class="sidebar-nav-item"><a href="#products">Products</a></li>
@@ -103,15 +115,15 @@
   </section>
   <!-- Callout-->
   @* <section class="callout">
-    <div class="container px-4 px-lg-5 text-center">
-    <h2 class="mx-auto mb-5">
-    Welcome to
-    <em>your</em>
-    next website!
-    </h2>
-    <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/theme/stylish-portfolio/">Download Now!</a>
-    </div>
-    </section> *@
+  <div class="container px-4 px-lg-5 text-center">
+  <h2 class="mx-auto mb-5">
+  Welcome to
+  <em>your</em>
+  next website!
+  </h2>
+  <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/theme/stylish-portfolio/">Download Now!</a>
+  </div>
+  </section> *@
   <!-- Products-->
   <section class="content-section" id="products">
     <div class="container px-4 px-lg-5">
@@ -124,7 +136,7 @@
           <a class="portfolio-item" href="https://localhost:7199/Products/Details/10">
             <div class="caption">
               <div class="caption-content">
-                  <div class="h3">View Details</div>
+                <div class="h3">View Details</div>
                 <p class="mb-0"></p>
               </div>
             </div>
@@ -175,12 +187,19 @@
   <section class="content-section bg-blue text-white">
     <div class="container px-4 px-lg-5 text-center">
       <h2 class="mb-4">Open the Sidebar or click the button below to Checkout</h2>
-      <a class="btn btn-primary btn-xl" href="#!">Checkout</a>
+            @using (Html.BeginForm("Cart", "Account", new
+      {
+        userId = SignInManager.UserManager.GetUserId(User)
+      }))
+      {
+        <a href="#" class="btn btn-primary btn-xl" onclick="this.closest('form').submit()">Checkout</a>
+      }
+
     </div>
   </section>
   <!-- Map-->
   @* <div class="map" id="contact">
-    </div> *@
+  </div> *@
   <!-- Footer-->
   <footer class="footer bg-blue text-center">
     <div class="container px-4 px-lg-5">

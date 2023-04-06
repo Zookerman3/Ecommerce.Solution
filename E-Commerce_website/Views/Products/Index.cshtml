@@ -1,17 +1,44 @@
 @{
   Layout = "_Layout";
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
 
-    <a href="@Url.Action("Index", "Products", new { type = "CPU", showAll = true })" class="login-button" >View CPU Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "GPU", showAll = true })" class="login-button" >View GPU Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "RAM", showAll = true })" class="login-button" >View RAM Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "Motherboard", showAll = true })" class="login-button">View Motherboard Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "PSU", showAll = true })" class="login-button"  >View PSU Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "FAN", showAll = true })" class="login-button">View Fan Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "CASE", showAll = true })" class="login-button">View Case Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "SSD", showAll = true })" class="login-button">View SSD Products</a>
 
 <body class="product-list">
+  <div class="product-nav">
+    <a href="@Url.Action("Index", "Products", new { type = "CPU", showAll = true })" class="login-button">CPUs</a>
+    <a href="@Url.Action("Index", "Products", new { type = "GPU", showAll = true })" class="login-button">GPUs</a>
+    <a href="@Url.Action("Index", "Products", new { type = "RAM", showAll = true })" class="login-button">RAM</a>
+    <a href="@Url.Action("Index", "Products", new { type = "Motherboard", showAll = true })"
+      class="login-button">Motherboards</a>
+    <a href="@Url.Action("Index", "Products", new { type = "PSU", showAll = true })" class="login-button">Power
+      Supplys</a>
+    <a href="@Url.Action("Index", "Products", new { type = "FAN", showAll = true })" class="login-button">Fans/a>
+      <a href="@Url.Action("Index", "Products", new { type = "CASE", showAll = true })" class="login-button">Cases</a>
+      <a href="@Url.Action("Index", "Products", new { type = "SSD", showAll = true })" class="login-button">SSDs</a>
+
+  </div>
+  <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand"><a href='@Url.Action("Index", "Home")'>Home</a></li>
+      <li class="sidebar-nav-item">
+        @using (Html.BeginForm("Cart", "Account", new
+        {
+          userId = SignInManager.UserManager.GetUserId(User)
+        }))
+        {
+          <a href="#" class="sidebar-nav-item-link" onclick="this.closest('form').submit()">Checkout</a>
+        }
+      </li>
+      @* <li class="sidebar-nav-item"><a href='@Url.Action("Cart", "Account")'>Checkout</a></li> *@
+      <li class="sidebar-nav-item"><a href="#about">About</a></li>
+      <li class="sidebar-nav-item"><a href="#services">Services</a></li>
+      <li class="sidebar-nav-item"><a href="#products">Products</a></li>
+      <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
   <div class="product-container">
 
     @foreach (Product product in Model)
@@ -19,7 +46,7 @@
       <div class="product-tile">
         <strong>@product.Brand</strong> @product.Type | @product.Name
         <img style="max-height: 150px; min-height: 150px; max-width: 200px; object-fit: contain;" src="@product.ImageLink"
-        alt="@product.Name">
+          alt="@product.Name">
         <a href="/Products/Details/@(product.ProductId)">View Details</a>
       </div>
 
@@ -60,3 +87,7 @@
 
 
 </body>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
