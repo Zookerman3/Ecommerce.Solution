@@ -106,11 +106,11 @@ namespace EcommerceSite.Controllers
         // thisBook.Copies = (thisBook.Copies -1);
         _db.SaveChanges();
       }
-      return RedirectToAction("Cart", new { id = userId });
+      return RedirectToAction("Cart", new { userId = userId });
     }
 
 
-    public ActionResult Cart(string userId, string page, bool showAll = true)
+
             [HttpPost]
         public ActionResult RemoveFromCart(int productId, string userId)
         {
@@ -120,7 +120,18 @@ namespace EcommerceSite.Controllers
                 _db.AppuserProducts.Remove(joinEntity);
                 _db.SaveChanges();
             }
-            return RedirectToAction("Cart", new { id = userId });
+            return RedirectToAction("Cart", new { userId = userId });
         }
+
+            public ActionResult Cart(string userId, string page, bool showAll = true)
+    {
+      List<Product> products = Product.GetProducts(page, showAll);
+      ApplicationUser thisUser = _db.Users
+          .Include(User => User.JoinEntites)
+          .FirstOrDefault(user => user.Id == userId);
+
+      ViewBag.Products = products;
+      return View(thisUser);
+    }
   }
 }
