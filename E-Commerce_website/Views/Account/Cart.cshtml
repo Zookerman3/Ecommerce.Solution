@@ -1,24 +1,158 @@
 @{
-    Layout = "_Layout";
+  Layout = "_Layout";
 }
 
+<body class="cart">
+  @using Microsoft.AspNetCore.Identity
+  @using EcommerceSite.Models
+  @inject SignInManager<ApplicationUser> SignInManager
 
-@using Microsoft.AspNetCore.Identity
-@using EcommerceSite.Models
-@inject SignInManager<ApplicationUser> SignInManager
-
-
-@foreach (Product product in ViewBag.Products)
-{
-  @foreach (AppuserProduct join in Model.JoinEntites)
-  {
-    if (join.ProductId == product.ProductId)
+  <div class="cart-items">
+    @foreach (Product product in ViewBag.Products)
     {
-      <li>
-        <strong>@product.Brand</strong> the @product.Type |  @product.Name |
-        <img style="max-height: 150px; min-height: 150px; max-width: 200px; object-fit: contain;" src="@product.ImageLink" alt="@product.Name">
-        | <a href="/Products/Details/@(product.ProductId)">View Details</a>
-      </li>
+      @foreach (AppuserProduct join in Model.JoinEntites)
+      {
+        if (join.ProductId == product.ProductId)
+        {
+          <div class="cart-item">
+            
+            <img style="max-height: 150px; min-height: 150px; max-width: 200px; object-fit: contain;" src="@product.ImageLink"
+              alt="@product.Name">
+              <br>
+              <br>
+              <strong>@product.Brand</strong> @product.Type | @product.Name
+            | <a href="/Products/Details/@(product.ProductId)">View Details</a>
+          </div>
+        }
+      }
     }
-  }
-}
+  </div>
+  <div class="checkout-container">
+    <div style="text-align: center; ">
+      <div style="margin-bottom: 1.25rem;">
+        <p></p>
+        <select id="item-options">
+          <option value="" price=""> - USD</option>
+        </select>
+        <select style="visibility: hidden" id="quantitySelect"></select>
+      </div>
+      <div id="paypal-button-container"></div>
+    </div>
+
+    <div id="smart-button-container">
+      @* <div style="text-align: center"><label for="description">Total cost: </label><input type="text"
+      name="descriptionInput" id="description" maxlength="127" value=""></div> *@
+      @* <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a
+      description</p>
+      *@
+      <div style="text-align: center"><label for="amount">Payment amount: </label><input name="amountInput"
+          type="number" id="amount" value=""><span> USD</span></div>
+      <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>
+      <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input
+          name="invoiceid" maxlength="127" type="text" id="invoiceid" value=""></div>
+      <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
+      <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+    </div>
+  </div>
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD"
+    data-sdk-integration-source="button-factory"></script>
+  <script>
+    function initPayPalButton() {
+      var amount = document.querySelector('#smart-button-container #amount');
+      var priceError = document.querySelector('#smart-button-container #priceLabelError');
+      var invoiceid = document.querySelector('#smart-button-container #invoiceid');
+      var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
+      var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
+
+      var elArr = [amount];
+
+      if (invoiceidDiv.firstChild.innerHTML.length > 1) {
+        invoiceidDiv.style.display = "block";
+      }
+
+      var purchase_units = [];
+      purchase_units[0] = {};
+      purchase_units[0].amount = {};
+
+      function validate(event) {
+        return event.value.length > 0;
+      }
+
+      paypal.Buttons({
+        style: {
+          color: 'gold',
+          shape: 'pill',
+          label: 'checkout',
+          layout: 'vertical',
+
+        },
+
+        onInit: function (data, actions) {
+          actions.disable();
+
+          if (invoiceidDiv.style.display === "block") {
+            elArr.push(invoiceid);
+          }
+
+          elArr.forEach(function (item) {
+            item.addEventListener('keyup', function (event) {
+              var result = elArr.every(validate);
+              if (result) {
+                actions.enable();
+              } else {
+                actions.disable();
+              }
+            });
+          });
+        },
+
+        onClick: function () {
+          if (amount.value.length < 1) {
+            priceError.style.visibility = "visible";
+          } else {
+            priceError.style.visibility = "hidden";
+          }
+
+          if (invoiceid.value.length < 1 && invoiceidDiv.style.display === "block") {
+            invoiceidError.style.visibility = "visible";
+          } else {
+            invoiceidError.style.visibility = "hidden";
+          }
+
+          purchase_units[0].amount.value = amount.value;
+
+          if (invoiceid.value !== '') {
+            purchase_units[0].invoice_id = invoiceid.value;
+          }
+        },
+
+        createOrder: function (data, actions) {
+          return actions.order.create({
+            purchase_units: purchase_units,
+          });
+        },
+
+        onApprove: function (data, actions) {
+          return actions.order.capture().then(function (orderData) {
+
+            // Full available details
+            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+            // Show a success message within this page, e.g.
+            const element = document.getElementById('paypal-button-container');
+            element.innerHTML = '';
+            element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+            // Or go to another URL:  actions.redirect('thank_you.html');
+
+          });
+        },
+
+        onError: function (err) {
+          console.log(err);
+        }
+      }).render('#paypal-button-container');
+    }
+    initPayPalButton();
+  </script>
+</body>
