@@ -14,7 +14,7 @@
       class="login-button">Motherboards</a>
     <a href="@Url.Action("Index", "Products", new { type = "PSU", showAll = true })" class="login-button">Power
       Supplys</a>
-    <a href="@Url.Action("Index", "Products", new { type = "FAN", showAll = true })" class="login-button">Fans/a>
+    <a href="@Url.Action("Index", "Products", new { type = "FAN", showAll = true })" class="login-button">Fans</a>
       <a href="@Url.Action("Index", "Products", new { type = "CASE", showAll = true })" class="login-button">Cases</a>
       <a href="@Url.Action("Index", "Products", new { type = "SSD", showAll = true })" class="login-button">SSDs</a>
 
@@ -44,7 +44,7 @@
     @foreach (Product product in Model)
     {
       <div class="product-tile">
-        <strong>@product.Brand</strong> @product.Type | @product.Name
+        <strong>$@product.Price</strong> <br> <strong>@product.Brand</strong> @product.Type <br> @product.Name
         <img style="max-height: 150px; min-height: 150px; max-width: 200px; object-fit: contain;" src="@product.ImageLink"
           alt="@product.Name">
         <a href="/Products/Details/@(product.ProductId)">View Details</a>
