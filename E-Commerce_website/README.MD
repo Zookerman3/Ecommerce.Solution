@@ -1,11 +1,14 @@
-using Microsoft.AspNetCore.Mvc;
-using EcommerceSite.Models;
+    <a href="@Url.Action("Index", "Products", new { type = "CPU", showAll = true })">View CPU Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "GPU", showAll = true })">View GPU Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "RAM", showAll = true })">View RAM Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "Motherboard", showAll = true })">View Motherboard Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "PSU", showAll = true })">View PSU Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "FAN", showAll = true })">View Fan Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "CASE", showAll = true })">View Case Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "SSD", showAll = true })">View SSD Products</a>
 
 
-namespace EcommerceSite.Controllers;
 
-public class ProductsController : Controller
-{
 
   public async Task<IActionResult> Index(string query, bool showAll, string type = null)
   {
@@ -49,48 +52,3 @@ public class ProductsController : Controller
       return View("Error");
     }
   }
-
-  public IActionResult Details(int id)
-  {
-    Product product = Product.GetDetails(id);
-    return View(product);
-  }
-
-  public ActionResult Create()
-  {
-    return View();
-  }
-
-  [HttpPost]
-  public ActionResult Create(Product product)
-  {
-    Product.Post(product);
-    return RedirectToAction("Index");
-  }
-
-  public ActionResult Edit(int id)
-  {
-    Product product = Product.GetDetails(id);
-    return View(product);
-  }
-
-  [HttpPost]
-  public ActionResult Edit(Product product)
-  {
-    Product.Put(product);
-    return RedirectToAction("Details", new { id = product.ProductId });
-  }
-
-  public ActionResult Delete(int id)
-  {
-    Product product = Product.GetDetails(id);
-    return View(product);
-  }
-
-  [HttpPost, ActionName("Delete")]
-  public ActionResult DeleteConfirmed(int id)
-  {
-    Product.Delete(id);
-    return RedirectToAction("Index");
-  }
-}

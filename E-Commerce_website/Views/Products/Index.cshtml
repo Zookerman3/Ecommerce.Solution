@@ -2,6 +2,15 @@
   Layout = "_Layout";
 }
 
+    <a href="@Url.Action("Index", "Products", new { type = "CPU", showAll = true })">View CPU Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "GPU", showAll = true })">View GPU Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "RAM", showAll = true })">View RAM Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "Motherboard", showAll = true })">View Motherboard Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "PSU", showAll = true })">View PSU Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "FAN", showAll = true })">View Fan Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "CASE", showAll = true })">View Case Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "SSD", showAll = true })">View SSD Products</a>
+
 <body class="product-list">
   <div class="product-container">
 
