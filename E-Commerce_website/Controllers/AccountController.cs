@@ -109,16 +109,18 @@ namespace EcommerceSite.Controllers
       return RedirectToAction("Cart", new { id = userId });
     }
 
+
     public ActionResult Cart(string userId, string page, bool showAll = true)
-    {
-      List<Product> products = Product.GetProducts(page, showAll);
-      ApplicationUser thisUser = _db.Users
-          .Include(User => User.JoinEntites)
-          .FirstOrDefault(user => user.Id == userId);
-
-      ViewBag.Products = products;
-      return View(thisUser);
-    }
-
+            [HttpPost]
+        public ActionResult RemoveFromCart(int productId, string userId)
+        {
+            AppuserProduct joinEntity = _db.AppuserProducts.FirstOrDefault(join => (join.UserID == userId && join.ProductId == productId));
+            if (joinEntity != null)
+            {
+                _db.AppuserProducts.Remove(joinEntity);
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Cart", new { id = userId });
+        }
   }
 }

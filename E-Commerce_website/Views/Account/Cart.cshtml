@@ -22,6 +22,10 @@
               <br>
               <strong>@product.Brand</strong> @product.Type | @product.Name
             | <a href="/Products/Details/@(product.ProductId)">View Details</a>
+            @using (Html.BeginForm("RemoveFromCart", "Account", new { productId = product.ProductId, userId = join.UserID }, FormMethod.Post))
+{
+    <input type="submit" value="Remove from Cart" />
+}
           </div>
         }
       }
