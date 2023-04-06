@@ -16,6 +16,10 @@
                     <br>
                     $@product.Price <br><strong>@product.Name</strong> <br>
                     <a href="/Products/Details/@(product.ProductId)">View Details</a>
+                     @using (Html.BeginForm("RemoveFromCart", "Account", new { productId = product.ProductId, userId = join.UserID }, FormMethod.Post))
+{
+    <input type="submit" value="Remove from Cart" />
+}
                 </div>
 
                 totalPrice += product.Price; // add the current product's price to the total price
