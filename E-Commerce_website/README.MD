@@ -1,54 +1,35 @@
-    <a href="@Url.Action("Index", "Products", new { type = "CPU", showAll = true })">View CPU Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "GPU", showAll = true })">View GPU Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "RAM", showAll = true })">View RAM Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "Motherboard", showAll = true })">View Motherboard Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "PSU", showAll = true })">View PSU Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "FAN", showAll = true })">View Fan Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "CASE", showAll = true })">View Case Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "SSD", showAll = true })">View SSD Products</a>
+@{
+    decimal totalPrice = 0; // initialize the total price variable
+}
 
-
-
-
-  public async Task<IActionResult> Index(string query, bool showAll, string type = null)
-  {
-    // if (string.IsNullOrEmpty(query))
-    // {
-    //   List<Product> products = Product.GetProducts(query, showAll);
-    //   return View("Index", products);
-    // }
-
-    if (string.IsNullOrEmpty(query))
+<div class="cart-items">
+    @foreach (Product product in ViewBag.Products)
     {
-      List<Product> products = Product.GetProducts(query, showAll);
+        @foreach (AppuserProduct join in Model.JoinEntites)
+        {
+            if (join.ProductId == product.ProductId)
+            {
+                <div class="cart-item">
+                    <img style="max-height: 150px; min-height: 150px; max-width: 200px; object-fit: contain;" src="@product.ImageLink"
+                        alt="@product.Name">
+                    <br>
+                    <br>
+                    $@product.Price <br><strong>@product.Name</strong> <br>
+                    <a href="/Products/Details/@(product.ProductId)">View Details</a>
+                </div>
 
-      if (!string.IsNullOrEmpty(type))
-      {
-        products = products.Where(p => p.Type == type).ToList();
-      }
-
-      return View("Index", products);
+                totalPrice += product.Price; // add the current product's price to the total price
+            }
+        }
     }
-
-    HttpClient client = new HttpClient();
-    string url = "https://api.example.com/products";
-
-    if (!string.IsNullOrEmpty(query))
-    {
-      List<Product> products = Product.GetProducts(query, showAll);
-      return View("Index", products);
-    }
-
-    HttpResponseMessage response = await client.GetAsync(url);
-
-    if (response.IsSuccessStatusCode)
-    {
-      List<Product> products = await response.Content.ReadFromJsonAsync<List<Product>>();
-      return View(products);
-    }
-    else
-    {
-      // handle the error response
-      return View("Error");
-    }
-  }
+    <p> Cart total: $@totalPrice </p> <!-- display the total price -->
+</div>
+  <div class="checkout-container">
+    <div id="smart-button-container">
+      @* <div style="text-align: center"><label for="description">Total cost: </label><input type="text"
+      name="descriptionInput" id="description" maxlength="127" value=""></div> *@
+      @* <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a
+      description</p>
+      *@
+      <div style="text-align: center"><label for="amount">Total: </label>
+      <input name="amountInput" type="number" id="amount" value=@totalPrice><span> USD</span></div>
