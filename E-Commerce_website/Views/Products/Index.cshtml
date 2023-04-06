@@ -27,18 +27,36 @@
   </div>
 
 
-    <button class="btn btn-primary btn-xl"id="next-page-btn">Next Page</button>
+  <button class="btn btn-primary btn-xl" id="next-page-btn">Next Page</button>
 
-    <script>
-      let pageNumber = 1;
-      const nextPageBtn = document.getElementById('next-page-btn');
+  <button class="btn btn-primary btn-xl" id="previous-page-btn">Previous Page</button>
 
-      nextPageBtn.addEventListener('click', () => {
-        pageNumber++;
-        const url = "@Url.Action("Index", "Products")?query=pageNumber=" + pageNumber;
-        window.location.href = url;
-      });
-    </script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    let pageNumber = urlParams.has('query') ? parseInt(urlParams.get('query').split('=')[1]) : 1;
+
+    const nextPageBtn = document.getElementById('next-page-btn');
+
+    nextPageBtn.addEventListener('click', () => {
+      pageNumber++;
+      if (pageNumber > 3) {
+        pageNumber = 3
+      }
+      const url = "@Url.Action("Index", "Products")?query=pageNumber=" + pageNumber;
+      window.location.href = url;
+    });
+
+    const prevPageBtn = document.getElementById('previous-page-btn');
+
+    prevPageBtn.addEventListener('click', () => {
+      pageNumber--;
+      if (pageNumber <= 0) {
+        pageNumber = 1
+      }
+      const url = "@Url.Action("Index", "Products")?query=pageNumber=" + pageNumber;
+      window.location.href = url;
+    });
+  </script>
 
 
 </body>
