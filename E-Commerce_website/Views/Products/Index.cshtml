@@ -2,14 +2,14 @@
   Layout = "_Layout";
 }
 
-    <a href="@Url.Action("Index", "Products", new { type = "CPU", showAll = true })">View CPU Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "GPU", showAll = true })">View GPU Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "RAM", showAll = true })">View RAM Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "Motherboard", showAll = true })">View Motherboard Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "PSU", showAll = true })">View PSU Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "FAN", showAll = true })">View Fan Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "CASE", showAll = true })">View Case Products</a>
-    <a href="@Url.Action("Index", "Products", new { type = "SSD", showAll = true })">View SSD Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "CPU", showAll = true })" class="login-button" >View CPU Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "GPU", showAll = true })" class="login-button" >View GPU Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "RAM", showAll = true })" class="login-button" >View RAM Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "Motherboard", showAll = true })" class="login-button">View Motherboard Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "PSU", showAll = true })" class="login-button"  >View PSU Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "FAN", showAll = true })" class="login-button">View Fan Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "CASE", showAll = true })" class="login-button">View Case Products</a>
+    <a href="@Url.Action("Index", "Products", new { type = "SSD", showAll = true })" class="login-button">View SSD Products</a>
 
 <body class="product-list">
   <div class="product-container">
@@ -17,7 +17,7 @@
     @foreach (Product product in Model)
     {
       <div class="product-tile">
-        <strong>@product.Brand</strong> the @product.Type | @product.Name 
+        <strong>@product.Brand</strong> @product.Type | @product.Name
         <img style="max-height: 150px; min-height: 150px; max-width: 200px; object-fit: contain;" src="@product.ImageLink"
         alt="@product.Name">
         <a href="/Products/Details/@(product.ProductId)">View Details</a>
