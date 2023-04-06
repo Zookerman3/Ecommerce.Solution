@@ -29,6 +29,17 @@ div#footer {
 
 }
 
+.product-nav {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.product-nav a {
+    color: black;
+    background-color: pink;
+    margin: 5px;
+    padding: 5px;
+}
 
 .cart {
     font-family: basic-sans, sans-serif;
@@ -358,6 +369,25 @@ div#footer {
     box-shadow: 0 0 20px rgba(8, 7, 16, 0.6);
 }
 
+#footer-home-button {
+    width: 5%;
+    height: 10%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 0px 0;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 2px;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(8, 7, 16, 0.6);
+    display: inline-block; 
+}
+
 #footer-login-button {
     width: 5%;
     height: 10%;
@@ -374,6 +404,7 @@ div#footer {
     text-decoration: none;
     border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 20px rgba(8, 7, 16, 0.6);
+    display: inline-block; 
 }
 
 #footer-logout-button {
@@ -392,7 +423,10 @@ div#footer {
     text-decoration: none;
     border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 20px rgba(8, 7, 16, 0.6);
+    display: inline-block; 
 }
+
+
 
 #login-status-message {
     float: right;
